@@ -1,0 +1,28 @@
+-- A) select count(idCLIENTE) from lcliente;
+-- B) select * from llicenca where month(DtAquisicao) = 10;
+-- C) select * from llicenca where month(DtAquisicao) = "5" and year(DtAquisicao) = "2007";
+-- D) select *, right(DescricaoTipo,5) as x from ltipo_empresa order by idTipo_Empresa asc;
+-- E) select *, right(DescricaoTipo,5) as x from ltipo_empresa order by idTipo_Empresa desc;
+-- F) select *, substring(DescricaoTipo, 6,10) from ltipo_empresa;
+-- G) select Nome_RazaoSocial, char_length(Nome_RazaoSocial) from lcliente order by Nome_RazaoSocial asc ;
+-- H) select NUmLicenca, DtAquisicao, now() as dia de hoje, datediff(now(), DtAquisicao) from llicenca;
+-- I) select upper(NomeSetor), lower(NomeSetor) from Lsetor;
+-- J) select s.*, v.versao from lsoftware s join lversao v on s.idsoftware = v.idsoftware_fk order by s.nomesoftware desc;
+-- K) select Nome_RazaoSocial, DescricaoTipo, NomeSetor from  lCLIENTE join lSETOR on idCLIENTE = idSETOR join Ltipo_empresa on idCliente = idTIpo_EmPRESA ;
+-- l) select idCliente, Nome_RazaoSocial, Numlicenca, DtAquisicao,  ValorAquisicao from lcliente join lLICENCA on idCliente = Numlicenca;
+-- M) select Nome_RazaoSocial,NomeSoftware from Lcliente join lSOFTWARE on idCLIENTE = idSOFTWARE;
+-- N)select Nome_RazaoSocial, DescricaoTipo, NomeSetor,UF from lCLIENTE join lSETOR on idCLIENTE = idSETOR join Ltipo_empresa on idCliente = idTIpo_EmPRESA where UF = "SP" OR UF = "RS" OR UF="PR" OR UF="MG";
+-- O) select NomeSoftware, Versao, Nome_RazaoSocial, DescricaoTipo, NomeSetor, NumLicenca, DtAquisicao, ValorAquisicao from lSOFTWARE join lVERSAO on idSOFTWARE_FK = idSOFTWARE join lCLIENTE on idCLIENTE = idSOFTWARE join lTIPO_EMPRESA on idTIPO_Empresa = idSOFTWARE join lSETOR on idSETOR = idSOFTWARE join lLICENCA on idCLIENTE_FK = idSOFTWARE
+-- P) select count(*) from lLICENCA;
+-- Q) select sum(ValorAquisicao), max(ValorAquisicao), min(ValorAquisicao), avg(ValorAquisicao) from  lLICENCA
+-- R) select Nome_RazaoSocial, NomeSetor from lCLIENTE join lSETOR on idCLIENTE = idSETOR where NomeSetor = 'Farmacautica'
+-- S) select nome_razaoSocial, count(NumLicenca) from lcliente join llicenca on idCLIENTE = idCliente_FK group by(nome_razaoSocial); 
+-- MANEIRAS DIFERENTES DE FAZER:
+-- T) select c.nome_razaosocial, sum(l.valoraquisicao), avg(l.valoraquisicao) from llicenca l join lcliente c on l.idcliente_fk = c.idcliente group by c.nome_razaosocial;
+-- U) select s.nomesetor, sum(l.valoraquisicao) from llicenca l join lcliente c on l.idcliente_fk = c.idcliente join lsetor s on c.idsetor_fk = s.idsetor where s.nomesetor = 'Financeira' group by s.nome_razaosocial;
+-- W) select s.idsoftware, sum(l.valoraquisicao) from llicenca l join lversao v on l.versao_fk = v.versao join lsoftware s on v.idsoftware group by s.idsoftware;
+-- X) select c.nome_razaosocial, s.nomesoftware, count(l.idsoftware_fk_fk) from lcliente c join llicenca l on c.idcliente = l.idcliente_fk join lsoftware s on l.idsoftware_fk_fk = s.idsoftware group by l.numlicenca;
+-- Y) select c.nome_razaosocial, count(l.numlicenca) as 'qtd' from lcliente c join llicenca l on c.idcliente = l.idcliente_fk group by c.nome_razaosocial having count(l.numlicenca) >10;
+
+
+ 
